@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0327601F1FE2D39E00F516DE /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327601E1FE2D39E00F516DE /* FeedViewController.swift */; };
+		032760211FE2E04500F516DE /* CirlceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032760201FE2E04500F516DE /* CirlceView.swift */; };
 		038C44281FDFEB4800F736B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C44271FDFEB4800F736B6 /* AppDelegate.swift */; };
 		038C442A1FDFEB4800F736B6 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C44291FDFEB4800F736B6 /* SignInVC.swift */; };
 		038C442D1FDFEB4800F736B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038C442B1FDFEB4800F736B6 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		0327601E1FE2D39E00F516DE /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		032760201FE2E04500F516DE /* CirlceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirlceView.swift; sourceTree = "<group>"; };
 		038C44241FDFEB4800F736B6 /* devslopes-social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "devslopes-social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		038C44271FDFEB4800F736B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		038C44291FDFEB4800F736B6 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				039E61EC1FE28D5100E1DDFE /* RoundButton.swift */,
 				039E61EE1FE28E9500E1DDFE /* FancyField.swift */,
 				039E61F01FE28F8800E1DDFE /* FancyButton.swift */,
+				032760201FE2E04500F516DE /* CirlceView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				039E61EF1FE28E9500E1DDFE /* FancyField.swift in Sources */,
 				038C442A1FDFEB4800F736B6 /* SignInVC.swift in Sources */,
 				039E61ED1FE28D5100E1DDFE /* RoundButton.swift in Sources */,
+				032760211FE2E04500F516DE /* CirlceView.swift in Sources */,
 				039E61F11FE28F8800E1DDFE /* FancyButton.swift in Sources */,
 				038C44281FDFEB4800F736B6 /* AppDelegate.swift in Sources */,
 				039E61E81FE28B8E00E1DDFE /* FancyView.swift in Sources */,
