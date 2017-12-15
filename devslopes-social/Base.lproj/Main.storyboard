@@ -263,6 +263,10 @@
                                                                 </stackView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="oKk-XT-F07">
                                                                     <rect key="frame" x="0.0" y="68" width="327" height="149"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="149" id="7D8-O9-lWC"/>
+                                                                        <constraint firstAttribute="width" constant="327" id="hLw-b4-3KP"/>
+                                                                    </constraints>
                                                                 </imageView>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TOc-eu-lQm">
                                                                     <rect key="frame" x="0.0" y="225" width="327" height="60"/>

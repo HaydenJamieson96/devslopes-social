@@ -84,9 +84,9 @@
 		038C44261FDFEB4800F736B6 /* devslopes-social */ = {
 			isa = PBXGroup;
 			children = (
-				03BBFEEE1FE3E541000C1563 /* Services */,
 				039E61F81FE29EE000E1DDFE /* devslopes-social.entitlements */,
 				039E61E91FE28BF100E1DDFE /* Util */,
+				03BBFEEE1FE3E541000C1563 /* Services */,
 				038C443B1FDFEF5000F736B6 /* Model */,
 				038C443C1FDFEF5400F736B6 /* View */,
 				038C443D1FDFEF5800F736B6 /* Controller */,
