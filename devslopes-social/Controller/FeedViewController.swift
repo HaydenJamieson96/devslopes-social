@@ -10,15 +10,21 @@ import UIKit
 import SwiftKeychainWrapper
 import Firebase
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imageAdd: CirlceView!
     
     var posts = [Post]()
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.posts = []
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        
         DataService.ds.REF_POSTS.observe(.value) { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
@@ -53,7 +59,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-
     @IBAction func signOutTapped(_ sender: Any) {
         let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("HAYDEN: id removed from keychain \(keyChainResult)")
@@ -61,14 +66,25 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "goToSignIn", sender: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func addImageTapped(_ sender: Any) {
+        present(self.imagePicker, animated: true, completion: nil)
     }
-    */
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            imageAdd.image = image
+        } else {
+            print("HAYDEN: Valid image not selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
+    
+   
 
 }
