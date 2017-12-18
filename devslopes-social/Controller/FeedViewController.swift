@@ -23,13 +23,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.posts = []
+       
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         
         DataService.ds.REF_POSTS.observe(.value) { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                self.posts = []
                 for snap in snapshot {
                     print("SNAP: \(snap)")
                     if let postDict = snap.value as? Dictionary<String, Any> {
@@ -106,10 +107,29 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("HAYDEN: unable to upload image to Firebase storage")
                 } else {
                     print("HAYDEN: Successfully uploaded image to Firebase storage")
-                    let downloadURL = metaData?.downloadURL()?.absoluteString                    
+                    let downloadURL = metaData?.downloadURL()?.absoluteString
+                    if let url = downloadURL {
+                        self.postToFirebase(imgUrl: url)
+                    }
                 }
             }
         }
+    }
+    
+    func postToFirebase(imgUrl: String) {
+        let post: Dictionary<String, Any> = [
+        "caption" : captionField.text!,
+        "imageUrl" : imgUrl,
+        "likes" : 0
+        ]
+        
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        
+        captionField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+        
     }
     
     
