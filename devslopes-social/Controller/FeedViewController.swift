@@ -14,10 +14,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageAdd: CirlceView!
+    @IBOutlet weak var captionField: FancyField!
     
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
+    var imageSelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,12 +81,36 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             imageAdd.image = image
+            imageSelected = true
         } else {
             print("HAYDEN: Valid image not selected")
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func postBtnTapped(_ sender: Any) {
+        guard let caption = captionField.text, caption != "" else {
+            print("HAYDEN: Caption must be entered")
+            return
+        }
+        guard let img = imageAdd.image, imageSelected == true else {
+            print("HAYDEN: An image must be selected")
+            return
+        }
+        if let imageData = UIImageJPEGRepresentation(img, 0.2) {
+            let imgUid = NSUUID().uuidString
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpeg"
+            DataService.ds.REF_POST_IMAEGS.child(imgUid).putData(imageData, metadata: metaData) { (metaData, error) in
+                if error != nil {
+                    print("HAYDEN: unable to upload image to Firebase storage")
+                } else {
+                    print("HAYDEN: Successfully uploaded image to Firebase storage")
+                    let downloadURL = metaData?.downloadURL()?.absoluteString                    
+                }
+            }
+        }
+    }
     
     
     
