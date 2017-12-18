@@ -16,6 +16,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var imageAdd: CirlceView!
     @IBOutlet weak var captionField: FancyField!
     
+    
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
@@ -58,11 +59,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostTableViewCell {
             if let img = FeedViewController.imageCache.object(forKey: post.imageUrl as NSString) {
                 cell.configureCell(post: post, img: img)
-                return cell
             } else {
-                cell.configureCell(post: post)
-                return cell
+                cell.configureCell(post: post)                
             }
+            return cell
         } else {
             return PostTableViewCell()
         }
